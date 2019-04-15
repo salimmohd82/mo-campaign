@@ -10,7 +10,11 @@ import data from "../data/data";
 
 class List extends Component {
   componentDidMount() {
-    this.props.addRootData(data);
+    const timeStamp = new Date();
+    const datedData = data.map(item => {
+      return { ...item, time: timeStamp.toString() };
+    });
+    this.props.addRootData(datedData);
   }
 
   componentDidUpdate() {

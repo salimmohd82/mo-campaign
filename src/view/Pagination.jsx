@@ -5,12 +5,18 @@ import "../App.css";
 
 class Pagination extends Component {
   onUpdatePageNumber = pageNumber => {
-    this.props.onUpdatePageNumber(pageNumber);
+    this.props.updatePageNumber(pageNumber);
   };
 
   render() {
     return (
       <div className="row justify-content-md-center pagination-row">
+        <span
+          className={this.props.page === 1 ? "active" : ""}
+          onClick={() => this.onUpdatePageNumber(1)}
+        >
+          {"<<"}
+        </span>
         <div className="col-md-auto">
           {this.props.pageArray.map(item => (
             <PageButton
@@ -21,6 +27,19 @@ class Pagination extends Component {
             />
           ))}
         </div>
+
+        <span
+          className={
+            this.props.page === Math.max(...this.props.pageArray)
+              ? "active"
+              : ""
+          }
+          onClick={() =>
+            this.onUpdatePageNumber(Math.max(...this.props.pageArray))
+          }
+        >
+          {">>"}
+        </span>
       </div>
     );
   }
