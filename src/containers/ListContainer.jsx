@@ -30,11 +30,11 @@ const getActiveCampaignsNotPaginated = data => {
   if (data.searchKey) {
     filteredData = searchCampaigns(filteredData, data.searchKey);
   }
-  return Object.entries(filteredData).map(entry => entry[1]);
+  return Object.entries(filteredData).map(entry => entry[1]).length;
 };
 
-const createPageArray = data => {
-  const noOfPages = Math.ceil(data.length / 10);
+const createPageArray = (data, currentPage) => {
+  const noOfPages = Math.ceil(data / 10);
   let pageArray = [];
   for (let i = 1; i <= noOfPages; i++) {
     pageArray.push(i);
@@ -55,11 +55,11 @@ const getCampaignDetailsFromId = (campaignListPaginated, id) => {
 
 const mapStateToProps = ({ campaign }) => {
   const campaignListPaginated = getActiveCampaigns(campaign);
-  const campaignListActive = getActiveCampaignsNotPaginated(campaign);
-  const pageArray = createPageArray(campaignListActive);
+  const activecampaignListCount = getActiveCampaignsNotPaginated(campaign);
+  const pageArray = createPageArray(activecampaignListCount, campaign.page);
   return {
     campaignListPaginated,
-    campaignListActive,
+    activecampaignListCount,
     pageArray,
     deleteList: campaign.deleteList,
     searchKey: campaign.searchKey,

@@ -9,7 +9,7 @@ function Edit({ campaignDetail, updateCampaignDetail }) {
       name: e.target.campaignName.value,
       type: campaignDetail.type,
       company: campaignDetail.company,
-      time: timeStamp.toString()
+      time: timeStamp.toGMTString()
     };
     updateCampaignDetail(updatedValue);
   };

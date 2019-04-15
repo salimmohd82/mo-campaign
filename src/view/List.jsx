@@ -12,7 +12,7 @@ class List extends Component {
   componentDidMount() {
     const timeStamp = new Date();
     const datedData = data.map(item => {
-      return { ...item, time: timeStamp.toString() };
+      return { ...item, time: timeStamp.toGMTString() };
     });
     this.props.addRootData(datedData);
   }
@@ -113,7 +113,8 @@ class List extends Component {
         </table>
         <Pagination
           updatePageNumber={this.props.updatePageNumber}
-          currentCampaignList={this.props.campaignListActive}
+          countinPage={this.props.campaignListPaginated.length}
+          activecampaignListCount={this.props.activecampaignListCount}
           page={this.props.page}
           pageArray={this.props.pageArray}
         />

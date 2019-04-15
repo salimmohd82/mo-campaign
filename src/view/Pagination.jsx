@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import PageButton from "./PageButton";
+import ResultCount from "./ResultCount";
 import "../App.css";
 
 class Pagination extends Component {
@@ -11,6 +12,11 @@ class Pagination extends Component {
   render() {
     return (
       <div className="row justify-content-md-center pagination-row">
+        <ResultCount
+          page={this.props.page}
+          countinPage={this.props.countinPage}
+          activecampaignListCount={this.props.activecampaignListCount}
+        />
         <span
           className={this.props.page === 1 ? "active" : ""}
           onClick={() => this.onUpdatePageNumber(1)}
