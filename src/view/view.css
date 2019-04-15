@@ -1,0 +1,53 @@
+table {
+	width: 100%;
+}
+.col-time {
+	width: 25%;
+}
+.col-sl {
+	width: 65px;
+}
+.col-actions {
+	width: 100px;
+}
+.highlight-search {
+	background: yellow;
+}
+.pd-t-10 {
+	padding-top: 10px;
+}
+.search {
+	margin-bottom: 20px;
+}
+
+.pagination-row span {
+	padding: 0px 10px;
+	border: 1px solid #4344bb;
+}
+.delete-btn {
+	color: #dc3545;
+	cursor: pointer;
+}
+.edit-btn {
+	margin-right: 20px;
+	cursor: pointer;
+}
+.search {
+	margin-bottom: 20px;
+}
+
+.pagination-row span {
+	padding: 1px 8px;
+	border: 1px solid #ccc;
+	margin: 0 3px;
+	line-height: 1;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.pagination-row span.active {
+	background: #777;
+	color: #fff;
+	border: 1px solid #222;
+	box-shadow: 0 1px 5px #ccc;
+}
