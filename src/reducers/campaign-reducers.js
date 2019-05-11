@@ -7,10 +7,11 @@ import {
   REMOVE_CAMPAIGN,
   UPDATE_CAMPAIGN,
   ADD_TO_DELETE_ARRAY,
-  REMOVE_FROM_DELETE_ARRAY
+  REMOVE_FROM_DELETE_ARRAY,
+  ADD_AUTH_USER_DATA
 } from "../actions/campaign-actions";
 
-export default function campaignReducer(state = {}, { type, payload }) {
+export default function campaignReducer(state = {}, {type, payload}) {
   switch (type) {
     case ADD_ROOT_DATA:
       return {
@@ -76,6 +77,11 @@ export default function campaignReducer(state = {}, { type, payload }) {
       return {
         ...state,
         deleteList: removedDeleteArray
+      };
+    case ADD_AUTH_USER_DATA:
+      return {
+        ...state,
+        authUsers: payload.authUsers
       };
     default:
       return state;

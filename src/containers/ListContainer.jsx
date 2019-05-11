@@ -1,4 +1,4 @@
-import { connect } from "react-redux";
+import {connect} from "react-redux";
 import {
   addRootData,
   writeEditId,
@@ -7,7 +7,8 @@ import {
   removeFromDeleteArray,
   clearEditId,
   updateCampaignDetail,
-  updatePageNumber
+  updatePageNumber,
+  addAuthUserData
 } from "../actions/campaign-actions";
 
 import List from "../view/List";
@@ -19,6 +20,10 @@ const getActiveCampaigns = data => {
   if (data.searchKey) {
     filteredData = searchCampaigns(filteredData, data.searchKey);
   }
+  console.log("filteredData", filteredData);
+  console.log(Object.entries(filteredData)
+    .slice(startIndex, startIndex + 10)
+    .map(entry => entry[1]));
   return Object.entries(filteredData)
     .slice(startIndex, startIndex + 10)
     .map(entry => entry[1]);
@@ -39,7 +44,26 @@ const createPageArray = (data, currentPage) => {
   for (let i = 1; i <= noOfPages; i++) {
     pageArray.push(i);
   }
+  // if (pageArray.length > 5) {
+  //   return reducePageArray(pageArray, currentPage);
+  // }
   return pageArray;
+};
+
+const reducePageArray = (pageArray, currentPage) => {
+  let maxPage = Math.max(...pageArray);
+  let reducedArray;
+  console.log("maxPage", pageArray);
+  // currentPage = 10;
+  if (currentPage === 1) {
+    reducedArray = pageArray.filter(item => item <= 3 || item >= maxPage - 1);
+  } else if (currentPage === maxPage) {
+    reducedArray = pageArray.filter(item => item <= 2 || item >= maxPage - 2);
+  } else {
+    reducedArray = pageArray;
+  }
+  console.log(reducedArray);
+  return reducedArray;
 };
 
 const searchCampaigns = (data, key) => {
@@ -53,7 +77,7 @@ const getCampaignDetailsFromId = (campaignListPaginated, id) => {
   return campaignListPaginated.find(item => item._id === id);
 };
 
-const mapStateToProps = ({ campaign }) => {
+const mapStateToProps = ({campaign}) => {
   const campaignListPaginated = getActiveCampaigns(campaign);
   const activecampaignListCount = getActiveCampaignsNotPaginated(campaign);
   const pageArray = createPageArray(activecampaignListCount, campaign.page);
@@ -77,7 +101,8 @@ const mapDispatchToProps = {
   removeFromDeleteArray,
   clearEditId,
   updateCampaignDetail,
-  updatePageNumber
+  updatePageNumber,
+  addAuthUserData
 };
 
 export default connect(

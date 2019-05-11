@@ -2,7 +2,7 @@
   "name": "react-redux-1",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://salimmohd82.github.io/mo-campaign",
+  "homepage": "https://salimmohd82.github.io/mo-campaign",
   "dependencies": {
     "jquery": "^3.3.1",
     "react": "^16.7.0",

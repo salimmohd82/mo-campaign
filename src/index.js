@@ -4,8 +4,8 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import { compose, createStore, combineReducers } from "redux";
-import { Provider } from "react-redux";
+import {compose, createStore, combineReducers} from "redux";
+import {Provider} from "react-redux";
 
 import campaignReducer from "./reducers/campaign-reducers";
 
@@ -19,7 +19,8 @@ const initialState = {
     page: 1,
     searchKey: "",
     editId: "",
-    deleteList: []
+    deleteList: [],
+    authUsers: []
   }
 };
 

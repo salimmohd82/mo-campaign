@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import "./view.css";
 
 class Search extends Component {
@@ -13,7 +13,7 @@ class Search extends Component {
 
   debounce = (fn, time) => {
     let timeout;
-    return function() {
+    return function () {
       const functionCall = () => fn.apply(this, arguments);
       clearTimeout(timeout);
       timeout = setTimeout(functionCall, time);

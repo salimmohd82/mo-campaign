@@ -7,6 +7,7 @@ export const REMOVE_CAMPAIGN = "campaign:removeCampaign";
 export const UPDATE_CAMPAIGN = "campaign:updateCampaignDetail";
 export const ADD_TO_DELETE_ARRAY = "campaign:addToDeleteArray";
 export const REMOVE_FROM_DELETE_ARRAY = "campaign:removeFromDeleteArray";
+export const ADD_AUTH_USER_DATA = "user:addAuthUserData";
 
 export function addRootData(data) {
   return {
@@ -85,6 +86,15 @@ export function removeFromDeleteArray(itemId) {
     type: REMOVE_FROM_DELETE_ARRAY,
     payload: {
       itemId
+    }
+  };
+}
+
+export function addAuthUserData(data) {
+  return {
+    type: ADD_AUTH_USER_DATA,
+    payload: {
+      authUsers: data
     }
   };
 }

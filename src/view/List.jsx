@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 
 import Pagination from "./Pagination";
 import Item from "./Item";
@@ -8,11 +8,12 @@ import "./view.css";
 
 import data from "../data/data";
 
+
 class List extends Component {
   componentDidMount() {
     const timeStamp = new Date();
     const datedData = data.map(item => {
-      return { ...item, time: timeStamp.toGMTString() };
+      return {...item, time: timeStamp.toGMTString()};
     });
     this.props.addRootData(datedData);
   }
