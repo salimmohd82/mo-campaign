@@ -1,0 +1,22 @@
+import React from "react";
+import "./view.css";
+
+export default function SiteNavigation () {
+    return(
+    <div>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand">Navbar</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <ul>
+                    <li class="nav-item nav-link active">Home <span class="sr-only">(current)</span></li>
+                    <li class="nav-item nav-link">Component lib</li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+    </div>);
+}
