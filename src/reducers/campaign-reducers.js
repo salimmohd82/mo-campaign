@@ -14,6 +14,7 @@ import {
 export default function campaignReducer(state = {}, {type, payload}) {
   switch (type) {
     case ADD_ROOT_DATA:
+      console.log("case ADD_ROOT_DATA", state);
       return {
         ...state,
         items: payload.campaign

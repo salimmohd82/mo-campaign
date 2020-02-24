@@ -1,0 +1,37 @@
+/* eslint-disable */
+// import axios from 'axios';
+
+const workercode = () => {
+
+  self.onmessage = function(e) {
+      console.log('Message received from main script' + e.data);
+
+      fetch(e.data)
+      .then((response) => {
+        return response.json();
+      })
+      .then((myJson) => {
+        // for simulating error uncomment line below
+        // myJson = {} 
+        setTimeout(() => {
+          self.postMessage(myJson)
+        },3000);
+      });
+
+      // axios
+      // .get("https://jsonplaceholder.typicode.com/users", {
+      //   completed: false
+      // })
+      // .then(res => {
+      //   self.postMessage(res);
+      // });
+  }
+};
+
+let code = workercode.toString();
+code = code.substring(code.indexOf("{")+1, code.lastIndexOf("}"));
+
+const blob = new Blob([code], {type: "application/javascript"});
+const worker_script = URL.createObjectURL(blob);
+
+export default worker_script;

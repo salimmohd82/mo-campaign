@@ -4,13 +4,20 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
-import {compose, createStore, combineReducers} from "redux";
+import {compose, createStore, combineReducers, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
+import thunk from 'redux-thunk';
+// import createSagaMiddleware from 'redux-saga';
+// import { logger } from 'redux-logger';
 
 import campaignReducer from "./reducers/campaign-reducers";
+import userReducer from "./reducers/user-reducers";
+
+import rootSaga from "./saga/sagas";
 
 const allReducers = combineReducers({
-  campaign: campaignReducer
+  campaign: campaignReducer,
+  user: userReducer
 });
 
 const initialState = {
@@ -21,13 +28,22 @@ const initialState = {
     editId: "",
     deleteList: [],
     authUsers: []
+  },
+  user: {
+    list: [],
+    loading: false
   }
 };
 
-const allStoreEnhanceres = compose(
+// create the saga middleware
+// const sagaMiddleware = createSagaMiddleware();
+
+const allStoreEnhanceres = compose(applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 const store = createStore(allReducers, initialState, allStoreEnhanceres);
+
+// sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

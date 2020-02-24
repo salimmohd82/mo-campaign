@@ -3,6 +3,6 @@ import ListContainer from "../containers/ListContainer";
 import SearchContainer from "../containers/SearchContainer";
 
 export default function MainContent () {
-    return([<SearchContainer />,
-            <ListContainer />]);
+    return([<SearchContainer key="search" />,
+            <ListContainer key="list" />]);
 }
