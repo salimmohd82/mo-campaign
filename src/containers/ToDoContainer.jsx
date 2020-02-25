@@ -5,10 +5,10 @@ import {
 
 import ToDoList from "../view/ToDoList";
 
-const mapStateToProps = ({user}) => {
-  const { list, loading } = user;
+const mapStateToProps = ({todos}) => {
+  const { list, loading } = todos;
   return { 
-    ToDoItems: list, 
+    toDoItems: list, 
     loading 
   };
 };

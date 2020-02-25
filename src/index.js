@@ -6,18 +6,20 @@ import * as serviceWorker from "./serviceWorker";
 
 import {compose, createStore, combineReducers, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import thunk from 'redux-thunk';
-// import createSagaMiddleware from 'redux-saga';
+// import thunk from 'redux-thunk';
+import createSagaMiddleware from 'redux-saga';
 // import { logger } from 'redux-logger';
 
 import campaignReducer from "./reducers/campaign-reducers";
 import userReducer from "./reducers/user-reducers";
+import todoReducer from "./reducers/todo-reducer";
 
 import rootSaga from "./saga/sagas";
 
 const allReducers = combineReducers({
   campaign: campaignReducer,
-  user: userReducer
+  user: userReducer,
+  todos: todoReducer
 });
 
 const initialState = {
@@ -32,18 +34,22 @@ const initialState = {
   user: {
     list: [],
     loading: false
+  },
+  todos: {
+    list: [],
+    loading: false
   }
 };
 
 // create the saga middleware
-// const sagaMiddleware = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
-const allStoreEnhanceres = compose(applyMiddleware(thunk),
+const allStoreEnhanceres = compose(applyMiddleware(sagaMiddleware),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 const store = createStore(allReducers, initialState, allStoreEnhanceres);
 
-// sagaMiddleware.run(rootSaga);
+sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>
