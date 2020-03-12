@@ -13,6 +13,7 @@ import "./App.css";
 import MainContent from "./view/MainContent";
 import UserContainer from "./containers/UserContainer";
 import ToDoContainer from "./containers/ToDoContainer";
+import GalleryContainer from "./containers/GalleryContainer";
 
 class App extends Component {
   
@@ -34,6 +35,9 @@ class App extends Component {
                     <Link to="/users">Users</Link>
                   </li>
                   <li className="nav-item nav-link">
+                    <Link to="/gallery">Gallery</Link>
+                  </li>
+                  <li className="nav-item nav-link">
                     <Link to="/todos">To Dos</Link>
                   </li>
                 </ul>
@@ -50,6 +54,9 @@ class App extends Component {
                 </Route>
                 <Route path="/todos">
                   <ToDoContainer />
+                </Route>
+                <Route path="/gallery">
+                  <GalleryContainer />
                 </Route>
                 <Route path="/">
                   <MainContent />

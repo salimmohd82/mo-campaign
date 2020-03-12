@@ -13,13 +13,15 @@ import createSagaMiddleware from 'redux-saga';
 import campaignReducer from "./reducers/campaign-reducers";
 import userReducer from "./reducers/user-reducers";
 import todoReducer from "./reducers/todo-reducer";
+import galleryReducer from "./reducers/gallery-reducers";
 
 import rootSaga from "./saga/sagas";
 
 const allReducers = combineReducers({
   campaign: campaignReducer,
   user: userReducer,
-  todos: todoReducer
+  todos: todoReducer,
+  gallery: galleryReducer
 });
 
 const initialState = {
@@ -38,6 +40,9 @@ const initialState = {
   todos: {
     list: [],
     loading: false
+  },
+  gallery: {
+    items:[]
   }
 };
 
